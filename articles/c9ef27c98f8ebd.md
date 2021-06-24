@@ -1,0 +1,29 @@
+---
+title: ""
+emoji: "💭"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: [Ubuntu20.04 でのsecondary IPの設定]
+published: true
+---
+Ubuntu 20.04の2台構成で、サーバ固有のIPアドレスとは別にクラスタ用IPアドレスを割り振ることでクラスタを組もうとした際のメモ。
+
+通信の送信元はクラスタIPで行いたい。Ubuntuで複数IPを割り当てると一方がSecondaryとなり、通信の送信元にはSecondaryでない方が使用される。これはsshサーバに接続してログに表示される接続元IPで確認。
+
+サーバ固有のIPが192.168.1.191,クラスタIPが192.168.1.11の場合に、クラスタのマスタからメンバに降格してサーバ固有のIPのみ割り振られた状態で再度クラスタIPを追加すると、クラスタIPがSecondaryとなってしまう。/etc/netplan/99_config.yamlにて以下のように指定しているのだが。
+```yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: false
+      dhcp6: false
+      addresses: 
+        - 192.168.1.11/24
+        - 192.168.1.191/24
+      gateway4: 192.168.1.254
+      nameservers:
+        addresses: [192.168.1.254]
+```
+
+IPアドレスの順番を変えてもダメ。どうも、追加したIPアドレスが必ずSecondaryになるという仕様らしい。対応として一旦クラスタIPアドレスのみ割り当て、サーバ固有のIPアドレスを追加するという手順を踏んだところ、クラスタIPアドレスがSecondaryでない設定をすることができた。
