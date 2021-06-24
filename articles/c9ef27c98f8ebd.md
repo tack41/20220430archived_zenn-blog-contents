@@ -1,8 +1,8 @@
 ---
-title: ""
+title: "Ubuntu20.04 でのsecondary IPの設定"
 emoji: "💭"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: [Ubuntu20.04 でのsecondary IPの設定]
+topics: [ubuntu]
 published: true
 ---
 Ubuntu 20.04の2台構成で、サーバ固有のIPアドレスとは別にクラスタ用IPアドレスを割り振ることでクラスタを組もうとした際のメモ。
