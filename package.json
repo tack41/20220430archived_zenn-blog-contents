@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preview": "npx zenn preview",
+    "create": "cp ./articles/termplate/template.md ./articles/xxx.md"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zenn-cli": "^0.1.89"
+    "markdownlint": "^0.24.0",
+    "zenn-cli": "^0.1.98"
+  },
+  "devDependencies": {
+    "husky": "^4.3.8"
   }
 }
