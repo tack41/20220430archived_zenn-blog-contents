@@ -1,1 +1,1 @@
-npx m
+npx markdownlint .

@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "markdownlint": "^0.24.0",
+    "markdownlint-cli": "^0.29.0",
     "zenn-cli": "^0.1.98"
   },
   "devDependencies": {

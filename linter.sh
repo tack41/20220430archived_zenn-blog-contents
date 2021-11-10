@@ -1,0 +1,1 @@
+npx markdownlint . --ignore ./node_modules
