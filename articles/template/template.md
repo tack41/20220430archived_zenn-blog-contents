@@ -6,8 +6,6 @@ topics: [mac,windows,bootcamp]
 published: true
 ---
 
-TL;DR
------
+## TL;DR
 
-経緯
-----
+## 経緯
